@@ -2,11 +2,12 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { use } from "react";
 
-const EditEmployee = ({ params }: { params: { id: string } }) => {
-  const { id } = params;
+const EditEmployee = ({ params }: { params: Promise<{ id: string }> }) => {
+  const { id } = use(params); 
+
   const router = useRouter();
-
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
@@ -14,16 +15,14 @@ const EditEmployee = ({ params }: { params: { id: string } }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // Fetch employee data on component mount
   useEffect(() => {
     const fetchEmployee = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/api/v1/employee/${id}`);
+        const response = await fetch(`http://localhost:5000/api/employees/${id}`);
         if (!response.ok) {
           throw new Error("Failed to fetch employee data");
         }
         const data = await response.json();
-        // Update state with nested employee data
         const { employee } = data;
         setName(employee.name);
         setPhone(employee.phone);
@@ -42,7 +41,7 @@ const EditEmployee = ({ params }: { params: { id: string } }) => {
   const handleUpdate = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:4000/api/v1/employee/${id}`, {
+      const response = await fetch(`http://localhost:5000/api/employees/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

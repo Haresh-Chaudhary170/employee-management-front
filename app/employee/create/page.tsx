@@ -13,7 +13,7 @@ const CreateEmployee = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:4000/api/v1/employee/add", {
+      const response = await fetch("https://employee-management-back-gj0ho5yab.vercel.app//api/v1/employee/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

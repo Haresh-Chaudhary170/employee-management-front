@@ -18,7 +18,7 @@ const EditEmployee = ({ params }: { params: Promise<{ id: string }> }) => {
   useEffect(() => {
     const fetchEmployee = async () => {
       try {
-        const response = await fetch(`https://employee-management-back.vercel.app/api/employee/${id}`);
+        const response = await fetch(`https://employee-management-back.vercel.app/api/v1/employee/${id}`);
         if (!response.ok) {
           throw new Error("Failed to fetch employee data");
         }
@@ -41,7 +41,7 @@ const EditEmployee = ({ params }: { params: Promise<{ id: string }> }) => {
   const handleUpdate = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch(`https://employee-management-back.vercel.app/api/employee/${id}`, {
+      const response = await fetch(`https://employee-management-back.vercel.app/api/v1/employee/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

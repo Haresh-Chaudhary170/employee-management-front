@@ -3,7 +3,7 @@ import axios from 'axios';
 const API_BASE_URL = 'http://localhost:4000/api/v1';
 
 export interface Employee {
-  _id: any;
+  _id: string;
   id: number;
   name: string;
   phone: string;
@@ -23,5 +23,5 @@ export const createEmployee = async (data: Omit<Employee, 'id'>): Promise<Employ
 export const updateEmployee = async (id: number, data: Omit<Employee, 'id'>): Promise<Employee> =>
   axios.put(`${API_BASE_URL}/employees/${id}`, data).then(res => res.data);
 
-export const deleteEmployee = async (id: String): Promise<void> =>
+export const deleteEmployee = async (id: string): Promise<void> =>
   axios.delete(`${API_BASE_URL}/employee/${id}`).then(res => res.data);

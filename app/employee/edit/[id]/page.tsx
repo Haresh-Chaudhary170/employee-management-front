@@ -31,7 +31,7 @@ const EditEmployee = ({ params }: { params: { id: string } }) => {
         setPosition(employee.position);
         setLoading(false);
       } catch (err) {
-        setError("Error fetching employee data.");
+        setError(`Error fetching employee data. ${err}`);
         setLoading(false);
       }
     };

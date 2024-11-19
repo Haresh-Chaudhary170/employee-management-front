@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'https://employee-management-back.vercel.app/api/v1/v1';
+const API_BASE_URL = 'https://employee-management-back.vercel.app/api/v1';
 
 export interface Employee {
   _id: string;
@@ -12,7 +12,7 @@ export interface Employee {
 }
 
 export const fetchEmployees = async (): Promise<Employee[]> => {
-    const response = await axios.get('https://employee-management-back.vercel.app/api/v1/v1/employees');
+    const response = await axios.get('https://employee-management-back.vercel.app/api/v1/employees');
     return response.data.employees;
   };
 

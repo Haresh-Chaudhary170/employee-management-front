@@ -51,7 +51,7 @@ const EditEmployee = ({ params }: { params: Promise<{ id: string }> }) => {
 
       if (response.ok) {
         alert("Employee updated successfully");
-        router.push("/"); // Redirect to home or employee list
+        router.push("/");
       } else {
         alert("Error updating employee");
       }
